@@ -26,6 +26,11 @@
 
 html {
 	word-break: break-word;
+	background-color: white;
+}
+
+body {
+	background: linear-gradient(to bottom, teal, white);
 }
 
 code {

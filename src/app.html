@@ -57,7 +57,7 @@
 				} else if (localStorage.theme === 'her') {
 					document.documentElement.classList.add('dark');
 					document.documentElement.classList.add('her');
-					metaThemeColorTag.setAttribute('content', '#983724');
+					metaThemeColorTag.setAttribute('content', '#008080');
 				} else {
 					document.documentElement.classList.add('dark');
 					metaThemeColorTag.setAttribute('content', '#171717');
@@ -162,7 +162,7 @@
 							height: 0.75rem;
 
 							border-radius: 9999px;
-							background-color: #fafafa9a;
+							background-color: #ffffff;
 						"
 					></div>
 
@@ -173,7 +173,7 @@
 							width: 0%;
 							height: 0.75rem;
 							border-radius: 9999px;
-							background-color: #fff;
+							background-color: #008080;
 						"
 						class="bg-white"
 					></div>
@@ -190,10 +190,11 @@
 <style type="text/css" nonce="">
 	html {
 		overflow-y: hidden !important;
+		background-color: white;
 	}
 
 	#splash-screen {
-		background: #fff;
+		background: white;
 	}
 
 	html.dark #splash-screen {
@@ -201,7 +202,7 @@
 	}
 
 	html.her #splash-screen {
-		background: #983724;
+		background: #008080;
 	}
 
 	#logo-her {
@@ -210,10 +211,12 @@
 
 	#progress-background {
 		display: none;
+		background-color: #ffffff;
 	}
 
 	#progress-bar {
 		display: none;
+		background-color: #008080;
 	}
 
 	html.her #logo {
@@ -222,7 +225,7 @@
 
 	html.her #logo-her {
 		display: block;
-		filter: invert(1);
+		background-color: #ffffff;
 	}
 
 	html.her #progress-background {

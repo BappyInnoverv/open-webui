@@ -4,7 +4,7 @@
 	import { getModels as _getModels } from '$lib/apis';
 
 	const dispatch = createEventDispatcher();
-	const i18n = getContext('i18n');
+	const i18n = getContext('i18n') as any;
 
 	import { models, settings, user } from '$lib/stores';
 
@@ -18,46 +18,68 @@
 
 	export let saveSettings: Function;
 
-	let config = null;
+	// Define config type
+	interface Config {
+		OPENAI_API_BASE_URLS: string[];
+		OPENAI_API_KEYS: string[];
+		OPENAI_API_CONFIGS: Record<number, any>;
+	}
+
+	let config: Config | null = null;
 
 	let showConnectionModal = false;
 
-	const addConnectionHandler = async (connection) => {
-		config.OPENAI_API_BASE_URLS.push(connection.url);
-		config.OPENAI_API_KEYS.push(connection.key);
-		config.OPENAI_API_CONFIGS[config.OPENAI_API_BASE_URLS.length - 1] = connection.config;
+	// Add Gemini API configuration
+	let GEMINI_API_BASE_URLS: string[] = [''];
+	let GEMINI_API_KEYS: string[] = [''];
+	let GEMINI_API_CONFIGS: Record<number, any> = {};
+
+	const addGeminiConnectionHandler = async (connection: { url: string; key: string; config: any }) => {
+		GEMINI_API_BASE_URLS = [...GEMINI_API_BASE_URLS, connection.url];
+		GEMINI_API_KEYS = [...GEMINI_API_KEYS, connection.key];
+		GEMINI_API_CONFIGS[GEMINI_API_BASE_URLS.length - 1] = connection.config;
 
 		await updateHandler();
 	};
 
-	const updateHandler = async () => {
-		// Remove trailing slashes
-		config.OPENAI_API_BASE_URLS = config.OPENAI_API_BASE_URLS.map((url) => url.replace(/\/$/, ''));
+	const addConnectionHandler = async (connection: { url: string; key: string; config: any }) => {
+		if (config) {
+			config.OPENAI_API_BASE_URLS.push(connection.url);
+			config.OPENAI_API_KEYS.push(connection.key);
+			config.OPENAI_API_CONFIGS[config.OPENAI_API_BASE_URLS.length - 1] = connection.config;
 
-		// Check if API KEYS length is same than API URLS length
-		if (config.OPENAI_API_KEYS.length !== config.OPENAI_API_BASE_URLS.length) {
-			// if there are more keys than urls, remove the extra keys
-			if (config.OPENAI_API_KEYS.length > config.OPENAI_API_BASE_URLS.length) {
-				config.OPENAI_API_KEYS = config.OPENAI_API_KEYS.slice(
-					0,
-					config.OPENAI_API_BASE_URLS.length
-				);
-			}
-
-			// if there are more urls than keys, add empty keys
-			if (config.OPENAI_API_KEYS.length < config.OPENAI_API_BASE_URLS.length) {
-				const diff = config.OPENAI_API_BASE_URLS.length - config.OPENAI_API_KEYS.length;
-				for (let i = 0; i < diff; i++) {
-					config.OPENAI_API_KEYS.push('');
-				}
-			}
+			await updateHandler();
 		}
-
-		await saveSettings({
-			directConnections: config
-		});
 	};
 
+	const updateHandler = async () => {
+		if (config) {
+			// Remove trailing slashes
+			config.OPENAI_API_BASE_URLS = config.OPENAI_API_BASE_URLS.map((url) => url.replace(/\/$/, ''));
+
+			// Check if API KEYS length is same than API URLS length
+			if (config.OPENAI_API_KEYS.length !== config.OPENAI_API_BASE_URLS.length) {
+				// if there are more keys than urls, remove the extra keys
+				if (config.OPENAI_API_KEYS.length > config.OPENAI_API_BASE_URLS.length) {
+					config.OPENAI_API_KEYS = config.OPENAI_API_KEYS.slice(0, config.OPENAI_API_BASE_URLS.length);
+				}
+
+				// if there are more urls than keys, add empty keys
+				if (config.OPENAI_API_KEYS.length < config.OPENAI_API_BASE_URLS.length) {
+					const diff = config.OPENAI_API_BASE_URLS.length - config.OPENAI_API_KEYS.length;
+					for (let i = 0; i < diff; i++) {
+						config.OPENAI_API_KEYS.push('');
+					}
+				}
+			}
+
+			await saveSettings({
+				directConnections: config
+			});
+		}
+	};
+
+	// Initialize config with default values
 	onMount(async () => {
 		config = $settings?.directConnections ?? {
 			OPENAI_API_BASE_URLS: [],
@@ -67,7 +89,10 @@
 	});
 </script>
 
-<AddConnectionModal direct bind:show={showConnectionModal} onSubmit={addConnectionHandler} />
+<AddConnectionModal
+	bind:show={showConnectionModal}
+	onSubmit={addGeminiConnectionHandler}
+/>
 
 <form
 	class="flex flex-col h-full justify-between text-sm"
