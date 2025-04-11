@@ -1,0 +1,232 @@
+/* Teal: #0D9488 (accent) */
+/* White: #FFFFFF / #F9FAFB (backgrounds, text on dark) */
+/* Light Gray: #F3F4F6 (light backgrounds/elements) */
+/* Medium Gray: #9CA3AF (borders, secondary text) */
+/* Dark Gray: #374151 (dark backgrounds, primary text on light) */
+/* Darker Gray: #1F2937 (darker backgrounds/elements) */
+
+.innoverv * {
+	color: #1F2937 !important; /* Darker Gray text */
+	stroke: #9CA3AF !important; /* Medium Gray stroke */
+}
+
+.innoverv .app > * {
+	background-color: #F9FAFB !important; /* Off-white main background */
+}
+
+.innoverv #nav {
+	background-color: #374151; /* Dark Gray nav */
+}
+
+.innoverv .py-2\.5.my-auto.flex.flex-col.justify-between.h-screen {
+	background: #374151; /* Dark Gray nav */
+}
+
+/* Adjust text color for elements on dark backgrounds */
+.innoverv #nav *,
+.innoverv .py-2\.5.my-auto.flex.flex-col.justify-between.h-screen *,
+.innoverv .text-xs.text-gray-700.uppercase.bg-gray-50.dark\:bg-gray-700.dark\:text-gray-400 *,
+.innoverv .px-2\.5.py-2\.5.min-w-fit.rounded-lg.flex-1.md\:flex-none.flex.text-right.transition.bg-gray-200.dark\:bg-gray-700 * {
+    color: #F9FAFB !important; /* Off-white text on dark */
+}
+.innoverv #nav .w-4.h-4,
+.innoverv .py-2\.5.my-auto.flex.flex-col.justify-between.h-screen .w-4.h-4 {
+    fill: #F9FAFB !important; /* Off-white icons on dark */
+    stroke: #F9FAFB !important;
+}
+
+
+.innoverv .bg-white.dark\:bg-gray-800 {
+	background: #FFFFFF; /* White card background */
+}
+
+.innoverv .w-4.h-4 {
+	fill: #0D9488; /* Teal icons */
+}
+
+.innoverv #chat-input {
+	background: #F3F4F6; /* Light Gray input */
+	margin: 0.3rem;
+	padding: 0.5rem;
+    border: 1px solid #D1D5DB; /* Add subtle border */
+}
+.innoverv #chat-input * {
+    color: #1F2937 !important; /* Darker gray text in input */
+}
+
+
+.innoverv .bg-gradient-to-t.from-white.dark\:from-gray-800.from-40\%.pb-2 {
+	background: #FFFFFF !important; /* White gradient */
+	padding-top: 0.6rem;
+}
+
+/* Disabled button */
+.innoverv
+	.text-white.bg-gray-100.dark\:text-gray-800.dark\:bg-gray-600.disabled.transition.rounded-lg.p-1.mr-0\.5.w-7.h-7.self-center {
+	background-color: #D1D5DB; /* Lighter Medium Gray */
+	transition: background-color 0.2s ease-out linear;
+}
+.innoverv
+	.text-white.bg-gray-100.dark\:text-gray-800.dark\:bg-gray-600.disabled.transition.rounded-lg.p-1.mr-0\.5.w-7.h-7.self-center * {
+    fill: #6B7280 !important; /* Medium Gray icon */
+    stroke: #6B7280 !important;
+}
+
+
+/* Active button */
+.innoverv
+	.bg-black.text-white.hover\:bg-gray-900.dark\:bg-white.dark\:text-black.dark\:hover\:bg-gray-100.transition.rounded-lg.p-1.mr-0\.5.w-7.h-7.self-center {
+	background-color: #0D9488; /* Teal */
+	transition: background-color 0.2s ease-out linear;
+}
+.innoverv
+	.bg-black.text-white.hover\:bg-gray-900.dark\:bg-white.dark\:text-black.dark\:hover\:bg-gray-100.transition.rounded-lg.p-1.mr-0\.5.w-7.h-7.self-center:hover {
+    background-color: #0F766E; /* Darker Teal on hover */
+}
+
+.innoverv
+	.bg-black.text-white.hover\:bg-gray-900.dark\:bg-white.dark\:text-black.dark\:hover\:bg-gray-100.transition.rounded-lg.p-1.mr-0\.5.w-7.h-7.self-center
+	> * {
+	fill: #FFFFFF !important; /* White icon */
+    stroke: #FFFFFF !important;
+	transition: fill 0.2s ease-out linear;
+}
+
+/* Selected chat item */
+.innoverv
+	.w-full.flex.justify-between.rounded-md.px-3.py-2.hover\:bg-gray-900.bg-gray-900.transition.whitespace-nowrap.text-ellipsis {
+	background-color: #4B5563; /* Slightly lighter Dark Gray */
+	font-weight: bold;
+}
+.innoverv
+	.w-full.flex.justify-between.rounded-md.px-3.py-2.hover\:bg-gray-900.bg-gray-900.transition.whitespace-nowrap.text-ellipsis * {
+    color: #F9FAFB !important; /* Off-white text */
+}
+
+
+/* Hover chat item */
+.innoverv .hover\:bg-gray-900:hover {
+	--tw-bg-opacity: 1;
+	background-color: rgb(75 85 99 / var(--tw-bg-opacity)); /* gray-600 */
+}
+.innoverv .hover\:bg-gray-900:hover * {
+    color: #F9FAFB !important; /* Off-white text */
+}
+
+
+/* Table header */
+.innoverv .text-xs.text-gray-700.uppercase.bg-gray-50.dark\:bg-gray-700.dark\:text-gray-400 {
+	background-color: #E5E7EB; /* Lighter gray */
+}
+.innoverv .text-xs.text-gray-700.uppercase.bg-gray-50.dark\:bg-gray-700.dark\:text-gray-400 * {
+    color: #374151 !important; /* Dark gray text */
+}
+
+.innoverv .scrollbar-hidden.relative.overflow-x-auto.whitespace-nowrap.svelte-3g4avz {
+	border-radius: 16px 16px 0 0;
+}
+
+/* Dropdown base */
+.innoverv .base.enter.svelte-ug60r4 {
+	background-color: #FFFFFF; /* White */
+    border: 1px solid #D1D5DB;
+}
+
+/* Message bubble */
+.innoverv .message.svelte-1nauejd {
+	color: #1F2937 !important; /* Darker gray text */
+}
+/* Ensure code blocks have appropriate background/text */
+.innoverv .message pre, .innoverv .message code {
+    background-color: #F3F4F6 !important; /* Light gray background */
+    color: #111827 !important; /* Even darker gray text */
+}
+
+
+/* Dropdown button */
+.innoverv #dropdownDots {
+	background-color: #F3F4F6; /* Light Gray */
+}
+.innoverv #dropdownDots:hover {
+	background-color: #E5E7EB; /* Lighter gray hover */
+}
+
+/* Dropdown item hover */
+.innoverv .flex.py-2\.5.px-3\.5.w-full.hover\:bg-gray-800.transition:hover {
+	background: #F3F4F6; /* Light Gray */
+}
+
+/* Modal background */
+.innoverv .m-auto.rounded-xl.max-w-full.w-\[40rem\].mx-2.bg-gray-50.dark\:bg-gray-900.shadow-3xl {
+	background-color: #FFFFFF; /* White */
+    border: 1px solid #E5E7EB;
+}
+
+/* Textarea/Input fields */
+.innoverv
+	.w-full.rounded.p-4.text-sm.dark\:text-gray-300.dark\:bg-gray-800.outline-none.resize-none,
+.innoverv
+	.w-full.rounded.py-2.px-4.text-sm.dark\:text-gray-300.dark\:bg-gray-800.outline-none.svelte-1vx7r9s {
+	background-color: #F3F4F6; /* Light Gray */
+    border: 1px solid #D1D5DB;
+    color: #1F2937 !important; /* Darker gray text */
+}
+.innoverv
+	.w-full.rounded.p-4.text-sm.dark\:text-gray-300.dark\:bg-gray-800.outline-none.resize-none::placeholder,
+.innoverv
+	.w-full.rounded.py-2.px-4.text-sm.dark\:text-gray-300.dark\:bg-gray-800.outline-none.svelte-1vx7r9s::placeholder {
+    color: #6B7280 !important; /* Medium gray placeholder */
+}
+
+
+/* Button group background */
+.innoverv
+	.px-2\.5.py-2\.5.min-w-fit.rounded-lg.flex-1.md\:flex-none.flex.text-right.transition.bg-gray-200.dark\:bg-gray-700 {
+	background-color: #E5E7EB; /* Lighter gray */
+}
+
+/* Button group hover */
+.innoverv
+	.px-2\.5.py-2\.5.min-w-fit.rounded-lg.flex-1.md\:flex-none.flex.text-right.transition.hover\:bg-gray-300.dark\:hover\:bg-gray-800:hover {
+	background-color: #D1D5DB; /* Slightly darker light gray */
+}
+
+/* Primary action button (e.g., Save) */
+.innoverv .px-4.py-2.bg-emerald-600.hover\:bg-emerald-700.text-gray-100.transition.rounded {
+	background-color: #0D9488; /* Teal */
+    color: #FFFFFF !important; /* White text */
+}
+.innoverv .px-4.py-2.bg-emerald-600.hover\:bg-emerald-700.text-gray-100.transition.rounded:hover {
+	background-color: #0F766E; /* Darker Teal */
+}
+
+
+/* Search input */
+.innoverv #chat-search > * {
+	background-color: #F3F4F6 !important; /* Light Gray */
+    border: 1px solid #D1D5DB;
+    color: #1F2937 !important; /* Darker gray text */
+}
+.innoverv #chat-search > *::placeholder {
+    color: #6B7280 !important; /* Medium gray placeholder */
+}
+
+
+/* Progress bars / specific components */
+.innoverv .svelte-1ee93ns {
+	--primary: #0D9488 !important; /* Teal */
+	--secondary: #E5E7EB !important; /* Lighter gray */
+}
+
+.innoverv .svelte-11kvm4p {
+	--primary: #0D9488 !important; /* Teal */
+	--secondary: #FFFFFF !important; /* White */
+}
+
+/* Ensure user/assistant message backgrounds are distinct if needed */
+.innoverv .message.user {
+    /* background-color: #E0F2F7; /* Optional: very light teal tint for user */
+}
+.innoverv .message.assistant {
+     /* background-color: #F9FAFB; /* Keep assistant messages off-white */
+}

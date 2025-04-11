@@ -79,33 +79,39 @@
 	{/if}
 </div>
 
-<div class="h-40 overflow-auto scrollbar-none {className} items-start">
+<!-- Grid container for suggestion cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 {className} items-start">
 	{#if filteredPrompts.length > 0}
-		{#each filteredPrompts as prompt, idx (prompt.id || prompt.content)}
+		{#each filteredPrompts as prompt (prompt.id || prompt.content)}
 			<button
-				class="waterfall flex flex-col flex-1 shrink-0 w-full justify-between
-				       px-3 py-2 rounded-xl bg-transparent hover:bg-black/5
-				       dark:hover:bg-white/5 transition group"
-				style="animation-delay: {idx * 60}ms"
+				class="flex flex-col w-full justify-start text-left
+				       p-4 rounded-lg bg-white dark:bg-gray-850
+				       border border-gray-200 dark:border-gray-700
+				       hover:shadow-md dark:hover:border-gray-600 transition group min-h-[100px]"
 				on:click={() => dispatch('select', prompt.content)}
 			>
-				<div class="flex flex-col text-left">
+				<!-- Icon Placeholder -->
+				<div class="mb-2">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-500 dark:text-gray-400">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.455-.032-.934-.342-1.311a5.98 5.98 0 0 1-1.6-3.986c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" />
+					</svg>
+				</div>
+
+				<!-- Text Content -->
+				<div class="flex flex-col">
 					{#if prompt.title && prompt.title[0] !== ''}
-						<div
-							class="font-medium dark:text-gray-300 dark:group-hover:text-gray-200 transition line-clamp-1"
-						>
+						<div class="font-semibold text-sm text-gray-800 dark:text-gray-100 mb-1 line-clamp-2">
 							{prompt.title[0]}
 						</div>
-						<div class="text-xs text-gray-500 font-normal line-clamp-1">
+						<div class="text-xs text-gray-600 dark:text-gray-400 font-normal line-clamp-2">
 							{prompt.title[1]}
 						</div>
 					{:else}
-						<div
-							class="font-medium dark:text-gray-300 dark:group-hover:text-gray-200 transition line-clamp-1"
-						>
+						<div class="font-semibold text-sm text-gray-800 dark:text-gray-100 mb-1 line-clamp-2">
 							{prompt.content}
 						</div>
-						<div class="text-xs text-gray-500 font-normal line-clamp-1">{$i18n.t('Prompt')}</div>
+						<!-- Optionally add a default subtitle if none exists -->
+						<!-- <div class="text-xs text-gray-600 dark:text-gray-400 font-normal line-clamp-2">{$i18n.t('Click to use this prompt')}</div> -->
 					{/if}
 				</div>
 			</button>
@@ -113,24 +119,4 @@
 	{/if}
 </div>
 
-<style>
-	/* Waterfall animation for the suggestions */
-	@keyframes fadeInUp {
-		0% {
-			opacity: 0;
-			transform: translateY(20px);
-		}
-		100% {
-			opacity: 1;
-			transform: translateY(0);
-		}
-	}
-
-	.waterfall {
-		opacity: 0;
-		animation-name: fadeInUp;
-		animation-duration: 200ms;
-		animation-fill-mode: forwards;
-		animation-timing-function: ease;
-	}
-</style>
+<!-- Removed Waterfall animation styles -->

@@ -15,7 +15,7 @@
 	export let getModels: Function;
 
 	// General
-	let themes = ['dark', 'light', 'rose-pine dark', 'rose-pine-dawn light', 'oled-dark'];
+	let themes = ['dark', 'light', 'rose-pine dark', 'rose-pine-dawn light', 'oled-dark', 'innoverv light']; // Updated theme name
 	let selectedTheme = 'system';
 
 	let languages: Awaited<ReturnType<typeof getLanguages>> = [];
@@ -203,9 +203,11 @@
 						? '#171717'
 						: _theme === 'oled-dark'
 							? '#000000'
-							: _theme === 'her'
-								? '#009999'
-								: '#008080'
+							: _theme.includes('innoverv') // Updated check
+								? '#F3F4F6' // Light Gray for innoverv theme
+								: _theme === 'her'
+									? '#009999'
+									: '#008080' // Default fallback (shouldn't be needed)
 				);
 			}
 		}
@@ -250,6 +252,7 @@
 						<option value="dark">🌑 {$i18n.t('Dark')}</option>
 						<option value="oled-dark">🌃 {$i18n.t('OLED Dark')}</option>
 						<option value="light">☀️ {$i18n.t('Light')}</option>
+						<option value="innoverv light">💧 {$i18n.t('Innoverv')}</option> <!-- Updated theme name and value -->
 						<option value="her">🌷 {$i18n.t('Her')}</option>
 						<!-- <option value="rose-pine dark">🪻 {$i18n.t('Rosé Pine')}</option>
 						<option value="rose-pine-dawn light">🌷 {$i18n.t('Rosé Pine Dawn')}</option> -->

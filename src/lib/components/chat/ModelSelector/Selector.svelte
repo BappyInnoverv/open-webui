@@ -2,6 +2,7 @@
 	import { DropdownMenu } from 'bits-ui';
 	import { marked } from 'marked';
 	import Fuse from 'fuse.js';
+	import type { Model } from '$lib/types';
 
 	import { flyAndScale } from '$lib/utils/transitions';
 	import { createEventDispatcher, onMount, getContext, tick } from 'svelte';
@@ -325,7 +326,7 @@
 			class="flex w-full text-left px-0.5 outline-hidden bg-transparent truncate {triggerClassName} justify-between font-medium placeholder-gray-400 focus:outline-hidden"
 		>
 			{#if selectedModel}
-				{selectedModel.label}
+				{selectedModel.label.replace(' (free)', '')}
 			{:else}
 				{placeholder}
 			{/if}
@@ -501,7 +502,7 @@
 
 												<div class="flex items-center line-clamp-1">
 													<div class="line-clamp-1">
-														{item.label}
+														{item.label.replace(' (free)', '')}
 													</div>
 
 													{#if item.model.owned_by === 'ollama' && (item.model.ollama?.details?.parameter_size ?? '') !== ''}

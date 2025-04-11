@@ -2005,6 +2005,12 @@
 											)
 										);
 									}}
+									on:selectPrompt={(e) => {
+										prompt = e.detail;
+										// Focus the input field after setting the prompt
+										const chatInput = document.getElementById('chat-input');
+										chatInput?.focus();
+									}}
 								/>
 							{/each}
 						</div>
