@@ -13,7 +13,7 @@
 		title: '',
 		content: '',
 		url: '',
-		dismissable: true,
+		dismissible: true,
 		timestamp: Math.floor(Date.now() / 1000)
 	};
 	export let className = 'mx-4';
@@ -29,7 +29,7 @@
 		error: 'bg-red-500/20 text-red-700 dark:text-red-200'
 	};
 
-	const dismiss = (id) => {
+	const dismiss = (id: string) => {
 		dismissed = true;
 		dispatch('dismiss', id);
 	};
@@ -83,11 +83,35 @@
 					{/if}
 				</div>
 
-				<div class="flex-1 text-xs text-gray-700 dark:text-white">
-					{@html marked.parse(DOMPurify.sanitize(banner.content))}
-				</div>
-			</div>
+				{#if banner.url}
+					<a href={banner.url} target="_blank" class="flex-1 text-xs text-gray-700 dark:text-white">
+						{@html marked.parse(DOMPurify.sanitize(banner.content))}
+					</a>
+				{:else}
+					<div class="flex-1 text-xs text-gray-700 dark:text-white">
+						{@html marked.parse(DOMPurify.sanitize(banner.content))}
+					</div>
+				{/if}
 
+				<!-- Prompt Suggestions -->
+				{#if banner.prompts}
+					<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 mt-3 w-full">
+						{#each banner.prompts as prompt (prompt.title)}
+							<button
+								class="p-3 border rounded-lg text-left hover:bg-gray-50 dark:hover:bg-gray-800 transition duration-150 ease-in-out"
+								on:click={() => dispatch('selectPrompt', prompt.content)}
+							>
+								<div class="font-semibold text-sm text-gray-800 dark:text-gray-100">
+									{prompt.title}
+								</div>
+								<div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
+									{prompt.subtitle}
+								</div>
+							</button>
+						{/each}
+					</div>
+				{/if}
+			</div>
 			{#if banner.url}
 				<div class="hidden md:flex group w-fit md:items-center">
 					<a

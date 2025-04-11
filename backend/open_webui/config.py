@@ -638,7 +638,8 @@ for file_path in (FRONTEND_BUILD_DIR / "static").glob("**/*"):
         except Exception as e:
             logging.error(f"An error occurred: {e}")
 
-frontend_favicon = FRONTEND_BUILD_DIR / "static" / "favicon.png"
+# Point to the actual source favicon in the frontend static directory
+frontend_favicon = OPEN_WEBUI_DIR.parent.parent / "static" / "static" / "favicon.png"
 
 if frontend_favicon.exists():
     try:
@@ -1125,7 +1126,7 @@ DEFAULT_ARENA_MODEL = {
     "id": "arena-model",
     "name": "Arena Model",
     "meta": {
-        "profile_image_url": "/favicon.png",
+        "profile_image_url": "/static/favicon.png",
         "description": "Submit your questions to anonymous AI chatbots and vote on the best response.",
         "model_ids": None,
     },

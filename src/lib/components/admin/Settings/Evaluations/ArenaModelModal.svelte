@@ -34,7 +34,7 @@
 		}
 	};
 
-	let profileImageUrl = '/favicon.png';
+	let profileImageUrl = '/static/favicon.png';
 	let description = '';
 
 	let selectedModelId = '';
@@ -90,7 +90,7 @@
 
 		name = '';
 		id = '';
-		profileImageUrl = '/favicon.png';
+		profileImageUrl = '/static/favicon.png';
 		description = '';
 		modelIds = [];
 		selectedModelId = '';
