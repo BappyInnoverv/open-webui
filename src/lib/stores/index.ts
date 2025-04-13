@@ -28,9 +28,9 @@ export const USAGE_POOL: Writable<null | string[]> = writable(null);
 export const theme = writable('system');
 
 export const shortCodesToEmojis = writable(
-	Object.entries(emojiShortCodes).reduce((acc, [key, value]) => {
+	Object.entries(emojiShortCodes).reduce((acc: { [key: string]: string }, [key, value]) => { // Added index signature type to acc
 		if (typeof value === 'string') {
-			acc[value] = key;
+			acc[value] = key; // Error was here
 		} else {
 			for (const v of value) {
 				acc[v] = key;
@@ -38,7 +38,7 @@ export const shortCodesToEmojis = writable(
 		}
 
 		return acc;
-	}, {})
+	}, {} as { [key: string]: string }) // Added type assertion for initial value
 );
 
 export const TTSWorker = writable(null);
@@ -62,7 +62,11 @@ export const toolServers = writable([]);
 
 export const banners: Writable<Banner[]> = writable([]);
 
-export const settings: Writable<Settings> = writable({});
+// Provided a default value satisfying the Settings type
+export const settings: Writable<Settings> = writable({
+	chatDirection: 'auto' // Default required value
+	// Add other defaults if necessary based on application logic
+});
 
 export const showSidebar = writable(false);
 export const showSettings = writable(false);
@@ -213,7 +217,12 @@ type Config = {
 		enable_admin_chat_access: boolean;
 		enable_community_sharing: boolean;
 		enable_autocomplete_generation: boolean;
+		enable_ldap?: boolean; // Added optional property
+		enable_code_interpreter?: boolean; // Added missing optional property
+		enable_direct_connections?: boolean; // Added missing optional property
+		enable_websocket?: boolean; // Added missing optional property
 	};
+	onboarding?: boolean; // Added optional property
 	oauth: {
 		providers: {
 			[key: string]: string;
@@ -226,10 +235,11 @@ type PromptSuggestion = {
 	title: [string, string];
 };
 
-type SessionUser = {
+export type SessionUser = { // Added export
 	id: string;
 	email: string;
 	name: string;
 	role: string;
 	profile_image_url: string;
+	token?: string; // Added optional property based on usage
 };
