@@ -84,7 +84,7 @@
 							class="w-full p-1.5 border rounded-md text-center text-xs hover:bg-gray-50 dark:hover:bg-gray-800 transition duration-150 ease-in-out font-medium"
 							on:click={() => dispatch('selectPrompt', banner.prompts?.[0]?.content)}
 						>
-							{banner.prompts?.[0]?.title ?? ''} {/* Restored optional chaining and nullish coalescing */}
+							{banner.prompts?.[0]?.title ?? ''}
 						</button>
 					</div>
 				{/if}
