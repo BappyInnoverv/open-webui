@@ -76,6 +76,7 @@ from open_webui.routers import (
     tools,
     users,
     utils,
+    appconfig,
 )
 
 from open_webui.routers.retrieval import (
@@ -916,7 +917,7 @@ app.add_middleware(
 
 app.mount("/ws", socket_app)
 
-
+app.include_router(appconfig.router, prefix="/api/v1/appconfig", tags=["Appconfig"])
 app.include_router(ollama.router, prefix="/ollama", tags=["ollama"])
 app.include_router(openai.router, prefix="/openai", tags=["openai"])
 
